@@ -52,13 +52,13 @@ def movie_post():
         'comment': comment_receive,
     }
 
-    db.movies.insert_one(doc)
+    db.movie.insert_one(doc)
 
     return jsonify({'msg':'POST request!'})
 
 @app.route("/movie", methods=["GET"])
 def movie_get():
-    movie_list = list(db.movies.find({}, {'_id': False}))
+    movie_list = list(db.movie.find({}, {'_id': False}))
     return jsonify({'movies': movie_list})
 
 if __name__ == '__main__':
